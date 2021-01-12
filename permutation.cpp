@@ -1,4 +1,3 @@
-
 #include <bits/stdc++.h>
 
 
@@ -15,6 +14,15 @@ typedef pair<int,int> pi;
 //string s;
 //getline(cin, s);
 
+void search(ll n){
+    vi permutation;
+    REP(i, 1, n+1) permutation.push_back(i);
+
+    do{
+        for(auto x: permutation) cout<<x<<" ";
+        cout<<"\n";
+    }while(next_permutation(permutation.begin(), permutation.end()));
+}
 
 
 int main(){
@@ -22,7 +30,8 @@ int main(){
     //freopen("output.txt", "w", stdout);
     ios::sync_with_stdio(0);
     cin.tie(0);
-    
+    //Print permutaion upto certain numbers
+    search(2);
 
     return 0;
 }
