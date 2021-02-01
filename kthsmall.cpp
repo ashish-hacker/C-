@@ -11,7 +11,10 @@ typedef vector<int> vi;
 typedef pair<int,int> pi;
 //string s;
 //getline(cin, s);
-
+void kthsmallnlarge(vi& a, int k){
+    int ksmall = INT_MIN, klarge = INT_MAX;
+    
+}
 
 int main(){
     //freopen("input.txt", "r", stdin);
