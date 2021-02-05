@@ -11,9 +11,17 @@ typedef vector<int> vi;
 typedef pair<int,int> pi;
 //string s;
 //getline(cin, s);
-void kthsmallnlarge(vi& a, int k){
-    int ksmall = INT_MIN, klarge = INT_MAX;
-    
+int kthsmall(vi& a, int l, int r, int k){
+    int ksmall = INT_MAX;
+    for(int i = 0; i <= r; i++){
+        if(ksmall > a[i] && l < k){
+            l++;
+            ksmall = a[i];
+        }
+        else if(ksmall > a[i] && l == k){
+            
+        }
+    }
 }
 
 int main(){
@@ -22,8 +30,9 @@ int main(){
     ios::sync_with_stdio(0);
     cin.tie(0);
     int n = 0;
-    
-    //cout<<n;
+    vi a = {1, 30, 2, 4};
+    n = kthsmallnlarge(a, 0, 3, 2);
+    cout<<n;
     return 0;
 }
 
