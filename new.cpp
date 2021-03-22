@@ -13,14 +13,13 @@ typedef pair<int,int> pi;
 //getline(cin, s);
 
 
+
 int main(){
     //freopen("input.txt", "r", stdin);
     //freopen("output.txt", "w", stdout);
     ios::sync_with_stdio(0);
     cin.tie(0);
-    int n = 0;
     
-    //cout<<n;
     return 0;
 }
 

@@ -7,6 +7,13 @@ bool anagram(string s1, string s2){
     sort(s2.begin(),s2.end());
     return s1 == s2;
 }
+bool isAnagram(string s1, string s2){
+    // define two pointers
+
+    // check if they have the equal length if not return false
+
+    // Two pointers pointing to the starting 
+}
 
 int main(){
     string s1="dcba", s2="abdce";
