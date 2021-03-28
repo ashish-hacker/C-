@@ -1,11 +1,12 @@
 #include <stdio.h>
-int test(char c[]){
-    if(c == "x") return 1;
-    else return 0;
-
+void test(int* c){
+    *c = *c * 5 + 5;
+    return;
 }
-int main(int argv, char* argc[]){
-    char c[10]={"x"};
-    printf("%d",test(c));
+int main(){
+    int c = 0, d  = 3;
+    float f = 1.5;
+    test(&c);
+    printf("%.2d:%.2d", c, d);
     return 0;
 }
