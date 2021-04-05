@@ -2,7 +2,7 @@
 #include <string.h>
 
 int checkTime(int hh, int mm, int payRate){
-    if(hh > 11 || hh < 1) return 0; // check for invalid inputs in hours and minutes and check for minimum wage rate
+    if(hh > 11 || hh < 1) return 0; // check for invalid zuts in hours and minutes and check for minimum wage rate
     if(mm > 59 || mm < 0) return 0;
     if(payRate < 7.25) return 0;
     return 1;
@@ -10,7 +10,7 @@ int checkTime(int hh, int mm, int payRate){
 
 int toMilTime(int hh, int mm, char s){
     if(s == 's'){ // if the time is in morning then no need to change the time
-        return;
+        return hh*100+mm;
     }
     else{
         hh = 12 + hh; // if the time is in the afternoon we have to add 12 to the hour part , no need to change for the minute part
@@ -43,47 +43,49 @@ int main(){
 
     int week = 0;
     float payRate, finalTotal = 0.0;
+    printf("Enter the pay rate: \n");
     scanf("%f",&payRate);
+    int start[5], end[5];
+    int i, check, hh, mm, payHours=0;
+    float weeklyPayment=0;
+    int z;
     while(1){
         week++;
-        int start[5], end[5];
-        int i, check, hh, mm, payHours=0;
-        float weeklyPayment=0;
         for(i = 0; i < 5; i++){
             printf("Enter the starting hour and minute: ");
-            scanf("%.2d %.2d", &hh,&mm);
+            scanf("%2d:%2d", &hh,&mm);
 
             check = checkTime(hh, mm, payRate);
-            if(!check) printf("Invalid time input!");
+            if(!check) printf("Invalid time zut!");
 
             start[i] = toMilTime(hh, mm, 's');
 
             printf("Enter the ending hour and minute: ");
-            scanf("%.2d %.2d", &hh,&mm);
+            scanf("%2d:%2d", &hh,&mm);
 
             check = checkTime(hh, mm, payRate);
-            if(!check) printf("Invalid time input!");
+            if(!check) printf("Invalid time zut!");
 
             end[i] = toMilTime(hh, mm, 'e');
         }
         for(i = 0; i < 5; i++){
             payHours += calPayHours(start[i], end[i]);
-            if(week == 1){
-                printf("M");
+            if(i == 0){
+                printf("M\n");
             }
-            else if(week == 2){
-                printf("T");
+            else if(i == 1){
+                printf("T\n");
             }
-            else if(week == 3){
-                printf("W");
+            else if(i == 2){
+                printf("W\n");
             }
-            else if(week == 4){
-                printf("R");
+            else if(i == 3){
+                printf("R\n");
             }
-            else if(week == 5){
-                printf("F");
+            else if(i == 4){
+                printf("F\n");
             }
-            printf("Starting time: %.2d:%.2d , Ending time: %.2d:%.2d", start[i]/100, start[i]%100, end[i]/100, end[i]%100);
+            printf("Starting time: %d , Ending time: %d\n", start[i], end[i]);
         }
         if(payHours > 40){
             weeklyPayment = 40.0 * payRate + ((float)payHours - 40.0) * (payRate * 1.5);
@@ -92,13 +94,14 @@ int main(){
             weeklyPayment = payHours * payRate;
         }
         finalTotal += weeklyPayment;
-        printf("Total no. of hours worked this week is: %.2d & Weekly pay is : %.2f", payHours, weeklyPayment);
-        char inp;
-        printf("Press Y/y to continue & N/n to terminate the program.")
-        scanf("%c", &inp);
-        if(inp == 'N' || inp == 'n') break;
+        printf("Total no. of hours worked this week is: %d & Weekly pay is : %.2f\n", payHours, weeklyPayment);
+        payHours = 0; weeklyPayment = 0;
+        printf("Press 1 to continue & 0 to terminate the program.\n");
+        scanf("%d",&z);
+        //printf("hello bro\n");
+        if(z == 0) break;
     }
-    printf("Final pay is: %.2d", finalTotal);
+    printf("Final pay is: %2f\n", finalTotal);
 
     return 0;
 }
