@@ -1,12 +1,9 @@
 #include<bits/stdc++.h>
 
-class A{
-    public:
-    int data;
-    A* next;
-};
+using namespace std;
 
 int main(){
-    A* o;
+    int i = 9, j = 0;
+    cout<<to_string(i) + to_string(j);
     return 0;
 }

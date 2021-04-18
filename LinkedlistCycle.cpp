@@ -72,6 +72,18 @@ class LinkedList{
         }
         return true;
     }
+    void reverse(){
+        node* temp = head;
+        node* next = head->next;
+        node* curr;
+        node* currn;
+        while(next != NULL){
+            curr = temp->next;
+            currn = next->next;
+            next->next = temp;
+            if(temp == head) temp->next = NULL;
+        }
+    }
 };
 
 
@@ -83,10 +95,12 @@ int main(){
     L.insertAtHead(9);
     L.insertAtHead(8);
     L.insertAtHead(7);
-    L.insertAtEnd(6);
+    
     L.insertAtEnd(5);
     L.insertAtKthPosition(2, 0);
 
+    L.print();
+    L.reverse();
     L.print();
     if(L.checkCycle()){
         cout<<"Cycle present";
